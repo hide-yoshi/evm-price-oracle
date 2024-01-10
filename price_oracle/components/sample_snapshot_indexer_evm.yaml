@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/horizonx-tech/chainsight-cli/main/resources/schema/snapshot_indexer_evm.json
+version: v1
+metadata:
+  label: Sample Snapshot Indexer Evm
+  type: snapshot_indexer_evm
+  description: ''
+  tags:
+  - ERC-20
+  - Ethereum
+  - DAI
+datasource:
+  location:
+    id: 0x9dA09CA893b089774DEb20AA1e375E613BA48cE9 # Mock Chainlink price feed
+    args:
+      network_id: 534351 # Scroll sepolia network id
+      rpc_url: https://sepolia-rpc.scroll.io
+  method:
+    identifier: latestAnswer():(uint256) # Call latestAnswer() function. 
+    interface: MockOracle.json # Interface file. We can get it from https://sepolia.scrollscan.dev/address/0x9dA09CA893b089774DEb20AA1e375E613BA48cE9#code
+    args: []
+interval: 100 # Interval seconds to call the function
+cycles: null

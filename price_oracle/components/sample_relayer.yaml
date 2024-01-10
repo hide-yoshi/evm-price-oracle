@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/horizonx-tech/chainsight-cli/main/resources/schema/relayer.json
+version: v1
+metadata:
+  label: Sample Relayer
+  type: relayer
+  description: ""
+  tags:
+    - Oracle
+    - Sepolia
+datasource:
+  location:
+    id: sample_algorithm_lens # This is the id of the algorithm lens
+  method:
+    identifier: "get_result : (vec text) -> (nat)" # This is the function to get the result from the algorithm lens. You can find it in artifacts/sample_algorithm_lens.did.
+    interface: null
+    args: []
+destination:
+  network_id: 11155111 # This is the network id of the Sepolia network
+  type: uint256
+  oracle_address: 0xb6cC49fA578bb155F6811f735437c74495905C1d # This is the address of the oracle contract on the Sepolia network
+  rpc_url: https://rpc.sepolia.org # This is the rpc url of the Sepolia network
+  method_name: null
+  interface: null
+interval: 100 # This is the interval to relay the data to the Sepolia network
+lens_targets:
+  identifiers:
+    - sample_snapshot_indexer_evm # This is the id of the snapshot indexer evm canister. The lens canister(Algorithm Lens) will get the data from this canister.
+cycles: null

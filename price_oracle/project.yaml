@@ -1,0 +1,6 @@
+version: v1
+label: price_oracle
+components:
+  - component_path: components/sample_snapshot_indexer_evm.yaml
+  - component_path: components/sample_algorithm_lens.yaml
+  - component_path: components/sample_relayer.yaml
